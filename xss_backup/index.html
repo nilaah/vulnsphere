@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XSS Demo</title>
+</head>
+<body>
+    <h1>XSS Example</h1>
+    <form action="#" method="GET">
+        <label for="input">Enter text:</label>
+        <input type="text" name="input" id="input">
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        if (params.has('input')) {
+            document.body.innerHTML += `<p>You entered: ${params.get('input')}</p>`;
+        }
+    </script>
+</body>
+</html>
+
